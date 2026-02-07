@@ -10,6 +10,13 @@ export default function main(canvas: HTMLCanvasElement) {
     window.addEventListener('resize', engine.onresize.bind(engine))
     engine.onresize()
 
+<<<<<<< Updated upstream
+=======
+    setTimeout(() => {
+        engine.models.Warden!.visible = true
+    }, 1000)
+
+>>>>>>> Stashed changes
     return () => {
         location.reload()
         engine.dispose()

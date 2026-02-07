@@ -8,6 +8,8 @@ canvas#threejs {
 
   background-color: black;
 
+  /* display: none; */
+
   z-index: 1;
 }
 
