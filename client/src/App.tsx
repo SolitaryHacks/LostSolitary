@@ -6,6 +6,12 @@ import Engine from './3d/Engine'
 import Scenes from './Scenes.json'
 
 
+
+
+
+
+
+
 let dialogueCount = 0
 let sceneCount = 1
 export default function App() {
@@ -21,11 +27,26 @@ export default function App() {
     const [ currentScene, setCurrentScene ] = useState('Scene-')
     const [ dialogueText, setDialogueText ] = useState('')
     const [ talkingToSrc, setTalkingToSrc ] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
+    const audioCall=useRef<HTMLAudioElement>(null);
 
+
+    const [ currentScene, setCurrentScene ] = useState('Scene-')//currentScene stores json currentScene
+    const [ dialogueText, setDialogueText ] = useState('')
+    const [ audioPlaying, setToPlay ]= useState(false);
+
+
+    const Makeplay=()=>{
+        if(audioCall.current){
+            audioCall.current!.play();
+        }
+        
+    }
     useEffect(() => {
         if(!Engine3D) return
 
         // TitleTransition()
+
+        
 
         console.log('3D Engine is available')
         console.log(Engine3D)
@@ -113,8 +134,20 @@ export default function App() {
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
+
+            
+
+
             <div className="TitleBackground" ref={AreaRef}>
                 {/* 2d stuff goes here vvvvvv */}
+
+                <div>
+                    <audio autoPlay loop ref={audioCall} src="/BackgroundSound.wav">
+                        
+                    </audio>
+                
+                </div>
+                
                 <button className="TitleButton" onClick={TitleTransition}></button>
                 <div className="Title" ref={TitleText}>
                      <span className='title-text'>Lost Solitary</span>
