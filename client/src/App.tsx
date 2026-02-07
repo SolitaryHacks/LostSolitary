@@ -33,11 +33,15 @@ export default function App() {
 
     function TitleTransition(){
         AreaRef.current!.style.backgroundImage='url("/SolitaryTitleTransition.gif")';
-        AreaRef.current!.style.animation='fade 2s linear forwards';
-        AreaRef.current!.style.opacity='0';
+        
+        
         TitleText.current!.style.opacity='0';
 
+        setTimeout(()=>{
+            AreaRef.current!.style.opacity='0';
+            AreaRef.current!.style.display="none";
 
+        }, 2000);
 
     }
 
