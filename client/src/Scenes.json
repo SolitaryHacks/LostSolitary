@@ -26,7 +26,17 @@
         {"Choice" : "Go to Chow Hall"}
     ],
 
+    "Scene-3" : [
+        {"name" : "Narrator", "text" : "You get to the chow hall and get your food. As you go sit down you realize that you don't really know anyone and there seems to be a lot of people that it would be a mistake to stick next to."},
+        {"name" : "Narrator", "text" : "You see someone sticking to themselves they seem relatively harmless maybe that would be a good choice you think and you remember them from roll call."},
+        {"name" : "Narrator", "text" : "As you start walking over there is someone else beckoning you over as you remember him from roll call too and he is still just as scary now. You are presented a choice."}
+    ],
+
     "Choice-3" : [
+        {"Choice1" : "Talk to inmate by himself", "Choice2" : "Talk to inmate calling you over"}
+    ],
+
+    "Choice" : [
         {"Choice1" : "action1", "Choice2" : "action 2"}
     ],
 
