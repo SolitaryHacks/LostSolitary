@@ -61,6 +61,25 @@
     ],
 
     "Scene-Jeff" : [
+        {"name" : "Narrator", "text" : "You decide that you best not ignore the dangerous guy calling you over who knows what would happen if he was ignored."},
+        {"name" : "Jeff", "text" : "\"So it's true. You don't remember.\""},
+        {"name" : "Narrator", "text" : "You wonder why everyone knows that you're forgetful."},
+        {"name" : "You", "text" : "\"Remember what?\""},
+        {"name" : "Jeff", "text" : "\"Anything\""},
+        {"name" : "You", "text" : "\"You know me?\""},
+        {"name" : "Jeff", "text" : "\"Everyone does I hope you know what you have to do later and my name if Jeff in case you forgot\" he says."},
+        {"name" : "Narrator", "text" : "\"What\" you say as the Bell rings its time to go to the yard."}
+    ],
+
+    "Choice-Yard" : [
+        {"Choice" : "Go to Yard"}
+    ],
+
+    "Choice" : [
+        {"Choice1" : "action1", "Choice2" : "action 2"}
+    ],
+
+    "Scene" : [
         {"name" : "Narrator", "text" : "Text"}
     ]
 }
