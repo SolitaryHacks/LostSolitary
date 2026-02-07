@@ -36,7 +36,7 @@ export default function App() {
     useEffect(() => {
         if(!Engine3D) return
 
-        TitleTransition()
+        // TitleTransition()
 
         console.log('3D Engine is available')
         console.log(Engine3D)
