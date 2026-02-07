@@ -97,6 +97,7 @@ img.talking-to {
 
 .dialogue {
   /*flex-grow: 1;*/
+  width: 80%;
   max-width: 80%;
   display: inline-block;
 
