@@ -24,6 +24,15 @@ export default function App() {
     const [ dialogueText, setDialogueText ] = useState('')
     const [ talkingToSrc, setTalkingToSrc ] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
 
+    const audioCall=useRef<HTMLAudioElement>(null);
+
+    const Makeplay=()=>{
+        if(audioCall.current){
+            audioCall.current!.play();
+        }
+        
+    }
+
     useEffect(() => {
         if(!Engine3D) return
 
@@ -189,6 +198,12 @@ export default function App() {
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
+        <div>
+                    <audio autoPlay loop ref={audioCall} src="/BackgroundSound.wav">
+                        
+                    </audio>
+                
+                </div>
             <div className="TitleBackground" ref={AreaRef}>
                 {/* 2d stuff goes here vvvvvv */}
                 <button className="TitleButton" onClick={TitleTransition}></button>
