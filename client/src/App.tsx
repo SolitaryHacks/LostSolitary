@@ -8,7 +8,7 @@ export default function App() {
     useEffect(() => {
         // run 3d main function
         main(CanvasRef.current as HTMLCanvasElement)
-    })
+    }, [])
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
