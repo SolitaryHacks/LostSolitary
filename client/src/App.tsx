@@ -6,14 +6,10 @@ import Engine from './3d/Engine'
 import Scenes from './Scenes.json'
 
 
-
-
-
-
-
-
 let dialogueCount = 0
 let sceneCount = 1
+let useRoutedScene = false
+let routeScene = ''
 export default function App() {
     const CanvasRef = useRef<HTMLCanvasElement | null>(null)
     const [ Engine3D, setEngine3D ] = useState<Engine | null>(null)
@@ -27,26 +23,11 @@ export default function App() {
     const [ currentScene, setCurrentScene ] = useState('Scene-')
     const [ dialogueText, setDialogueText ] = useState('')
     const [ talkingToSrc, setTalkingToSrc ] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
-    const audioCall=useRef<HTMLAudioElement>(null);
 
-
-    const [ currentScene, setCurrentScene ] = useState('Scene-')//currentScene stores json currentScene
-    const [ dialogueText, setDialogueText ] = useState('')
-    const [ audioPlaying, setToPlay ]= useState(false);
-
-
-    const Makeplay=()=>{
-        if(audioCall.current){
-            audioCall.current!.play();
-        }
-        
-    }
     useEffect(() => {
         if(!Engine3D) return
 
-        // TitleTransition()
-
-        
+        TitleTransition()
 
         console.log('3D Engine is available')
         console.log(Engine3D)
@@ -73,7 +54,7 @@ export default function App() {
     }
 
     function setModels(name: string) {
-        if(name === 'Neighbor') {
+        if(name === 'Neighbor' || name === 'Preston') {
             setTalkingToSrc(() => '/image/prisoner.png')
             Engine3D!.showModel('Prisoner')
         } else if(name === 'Warden') {
@@ -85,7 +66,57 @@ export default function App() {
         }
     }
 
+    function routedDialogue() {
+        console.log('route')
+        // @ts-ignore    
+        const scene = Scenes['Scene-' + routeScene]
+
+        console.log(routeScene)
+
+        if(routeScene === 'Preston') {
+            if(dialogueCount >= scene.length) {
+                // @ts-ignore    
+                const choices = Scenes['Choice-Preston'][0]
+
+                Choice1Ref.current!.style.visibility = 'visible'
+                Choice2Ref.current!.style.visibility = 'visible'
+
+                setDialogueText(() => `Select a choice... ${choices.Choice1} or ${choices.Choice2}`)
+
+                return
+            }
+
+        } else if(routeScene === 'Preston.I') {
+
+        } else if(routeScene === 'Preston.You') {
+
+        }
+
+        const dialogue = scene[dialogueCount]
+
+        setModels(dialogue.name)
+        setDialogueText(() => {
+            return `[${dialogue.name}]: ${dialogue.text}`
+        })
+
+        dialogueCount++
+
+        // talk to himself => preston
+
+        // call over => jeff
+        
+    }
+
     function nextDialogue() {
+        if(useRoutedScene) {
+            routedDialogue()
+            
+            return
+        }
+        // if(sceneCount >= 3) {
+            // return
+        // }
+
         console.log(dialogueCount)
 
         // @ts-ignore
@@ -126,6 +157,30 @@ export default function App() {
         Choice1Ref.current!.style.visibility = 'hidden'
         Choice2Ref.current!.style.visibility = 'hidden'
 
+        if(!useRoutedScene && sceneCount >= 3) {
+            useRoutedScene = true
+
+            if(buttonChoice === 'choice1') {
+                routeScene = 'Preston'
+            } else {
+                routeScene = 'Jeff'
+            }
+
+            sceneCount = 0
+            dialogueCount = 0
+
+            routedDialogue()
+
+            return
+        } 
+
+        if(useRoutedScene) {
+            sceneCount++
+            dialogueCount = 0
+
+            return
+        }
+
         sceneCount++
         dialogueCount = 0
 
@@ -134,20 +189,8 @@ export default function App() {
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
-
-            
-
-
             <div className="TitleBackground" ref={AreaRef}>
                 {/* 2d stuff goes here vvvvvv */}
-
-                <div>
-                    <audio autoPlay loop ref={audioCall} src="/BackgroundSound.wav">
-                        
-                    </audio>
-                
-                </div>
-                
                 <button className="TitleButton" onClick={TitleTransition}></button>
                 <div className="Title" ref={TitleText}>
                      <span className='title-text'>Lost Solitary</span>
