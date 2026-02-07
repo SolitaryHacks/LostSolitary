@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import main3d from './3d/main'
 import './App.css'
+import Engine from './3d/Engine'
 
 
 
 export default function App() {
     const CanvasRef = useRef<HTMLCanvasElement | null>(null)
-
-    const[,Title] = useState(28);
-
+    const [ Engine3D, setEngine3D ] = useState<Engine | null>(null)
 
     const AreaRef=useRef<HTMLDivElement>(null);//For titleTransition
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
@@ -17,20 +16,16 @@ export default function App() {
 
 
     const threeSecTimer=useRef<HTMLDivElement>(null);//For creating a 3 second timer
-    const fader=useRef<HTMLDivElement>(null);//Permamently fades a div element
-
-    const ToSecondLevel=useRef<HTMLDivElement>(null);//For after titletransition
-    
 
     useEffect(() => {
-        const engine3d = main3d(CanvasRef.current as HTMLCanvasElement)
-    
-        // dispose 3d engine
-        console.log(AreaRef.current);
-        
+        if(!Engine3D) return
 
-        return () => engine3d()
-        
+        console.log('3D Engine is available')
+        console.log(Engine3D)
+    }, [Engine3D])
+
+    useEffect(() => {
+        setEngine3D(main3d(CanvasRef.current as HTMLCanvasElement))
     }, [])
 
 
