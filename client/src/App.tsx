@@ -31,8 +31,9 @@ export default function App() {
         TitleText.current!.style.opacity='0';
 
         setTimeout(()=>{
-            AreaRef.current!.style.opacity='0';
-            AreaRef.current!.style.display="none";
+        AreaRef.current!.style.backgroundImage = 'none';
+            // AreaRef.current!.style.opacity='0';
+            // AreaRef.current!.style.display="none";
 
             
             Engine3D!.models.Guard!.visible = true
@@ -44,9 +45,12 @@ export default function App() {
             <div className="TitleBackground" ref={AreaRef}>
                 {/* 2d stuff goes here vvvvvv */}
                 <button className="TitleButton" onClick={TitleTransition}></button>
-                <div className="TitleText" ref={TitleText} style={{width: "70%", display: 'flex', position: "fixed",right: "20%", alignItems: "center",justifyContent: "center", fontSize: "500%", fontFamily: 'sans-serif',fontStyle: 'italic',fontWeight:"100%"}}>Lost Solitary
-                </div>
+                <div className="TitleText" ref={TitleText} style={{width: "70%", display: 'flex', position: "fixed",right: "20%", alignItems: "center",justifyContent: "center", fontSize: "500%", fontFamily: 'sans-serif',fontStyle: 'italic',fontWeight:"100%"}}>Lost Solitary</div>
                 <div className="ChatBox">
+                    <img className='talking-to' src="/image/Guard.png" alt="" />
+                    <div className='dialogue'>dialogue</div>
+                    <button className='choice'>Choice 1</button>
+                    <button className='choice'>Choice 2</button>
                 </div>
         </div>
     </>

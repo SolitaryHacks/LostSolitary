@@ -30,6 +30,8 @@ canvas#threejs {
   background-size: 100% 100%;
   
 
+  display: flex;
+  align-items: flex-end;
 
 
   z-index: 2;
@@ -54,18 +56,32 @@ canvas#threejs {
 
 
 .ChatBox{
-  text-align:bottom left;
-  background-color: black;
-  heigth:10%;
-  opacity: 30%;
-  
-  border-radius: 20%;
-  position: absolute;
-  bottom:5%;
-  left:40%;
+  width: 100%;
+  height: 30%;
+
+  background-color: red;
+  display: flex;
+
+  color: white;
+
   z-index:2;
+}
+
+img.talking-to {
+  width: 10rem;
+  
+  aspect-ratio: 1 / 1;
+}
+
+.dialogue {
+  flex-grow: 1;
 
 }
+
+button.choice {
+
+}
+
 
 @keyframes fade{
 
