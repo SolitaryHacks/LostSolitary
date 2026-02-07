@@ -52,12 +52,14 @@
 
     "Scene-Preston.I" : [
         {"name" : "Preston", "text" : "\"You're whos knocking on deaths door and if you ask the warden someone who is about to suffer for eternity after. But apart from that I would say you're just an unclucky guy who's gonna have to make some choices lest they want to suffer.\""},
-        {"name" : "You", "text" : "\"Geez way to sour the mood I already know I'm going to die\""}
+        {"name" : "You", "text" : "\"Geez way to sour the mood I already know I'm going to die\""},
+        {"name" : "Narrator", "text" : "The bell rings its time to go to the yard."}
     ],
 
     "Scene-Preston.You" : [
         {"name" : "Preston", "text" : "\"I'm someone who has been here longer then you and knows a thing or two. You can believe me or you cannot but I would not recommend the latter.\""},
-        {"name" : "You", "text" : "\"Alright, Ill try and keep that in mind\""}
+        {"name" : "You", "text" : "\"Alright, Ill try and keep that in mind\""},
+        {"name" : "Narrator", "text" : "The bell rings its time to go to the yard."}
     ],
 
     "Scene-Jeff" : [
@@ -68,11 +70,25 @@
         {"name" : "Jeff", "text" : "\"Anything\""},
         {"name" : "You", "text" : "\"You know me?\""},
         {"name" : "Jeff", "text" : "\"Everyone does I hope you know what you have to do later and my name if Jeff in case you forgot\" he says."},
-        {"name" : "Narrator", "text" : "\"What\" you say as the Bell rings its time to go to the yard."}
+        {"name" : "Narrator", "text" : "\"What\" you say as the bell rings its time to go to the yard."}
     ],
 
     "Choice-Yard" : [
         {"Choice" : "Go to Yard"}
+    ],
+
+    "Scene-Yard" : [
+        {"name" : "Narrator", "text" : "You follow the group of inmates outside to the yard you wander around a little aimlessly until Jeff finds you again."},
+        {"name" : "Jeff", "text" : "\"Hey, You. Dead man walking.\""},
+        {"name" : "You", "text" : "\"…What do you want?\""},
+        {"name" : "Jeff", "text" : "\"Simple job. Go to the visitation center and wait for someone to approach you they know who you are and simply bring back what they give you.\""},
+        {"name" : "You", "text" : "\"“And if I don't?”\""},
+        {"name" : "Jeff", "text" : "\"Then you get breakfast, work duty… and an execution\""},
+        {"name" : "Narrator", "text" : "You are forced to may a choice"}
+    ],
+
+    "Choice-Job" : [
+        {"Choice1" : "Accept Job", "Choice2" : "Decline"}
     ],
 
     "Choice" : [
