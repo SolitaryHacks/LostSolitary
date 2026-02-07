@@ -14,9 +14,9 @@ export default function App() {
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
     const ChatBoxRef = useRef<HTMLDivElement>(null)
 
-    const [ currentScene, setCurrentScene ] = useState('Scene-1')
-    const [ dialogueText, setDialogueText ] = useState('')
-    const [ dialogueCount, setDialogueCount ] = useState(-1)
+    const [ currentScene, setCurrentScene ] = useState('Scene-1')//The current state starts in scene 1
+    const [ dialogueText, setDialogueText ] = useState('')//current dialouge text
+    const [ dialogueCount, setDialogueCount ] = useState(-1)//How long the Dialouge is
 
     useEffect(() => {
         if(!Engine3D) return
@@ -45,7 +45,7 @@ export default function App() {
             
             Engine3D!.models.Guard!.visible = true
         }, 2000);
-    }
+    }//end of Title transition
 
     function nextDialogue() {
         setDialogueCount(c => c++)
@@ -55,7 +55,7 @@ export default function App() {
             
             return ``
         })
-    }
+    }//end of next Dialogue
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
@@ -69,13 +69,16 @@ export default function App() {
                     <img className='talking-to' src="/image/Guard.png" alt="" />
                     <div className='dialogue'>
                         <div className="dialogue-text" onClick={nextDialogue}>
-                           { dialogueText }
+                           { "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"}
                         </div>
 
-                        <button className='choice'>Choice 1</button>
-                        <button className='choice'>Choice 2</button>
+                        <button className='choice1'>Choice 1</button>
+                        <button className='choice2'>Choice 2</button>
                     </div>
                 </div>
         </div>
     </>
+
+
+
 }
