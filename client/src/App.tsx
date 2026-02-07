@@ -108,7 +108,7 @@ export default function App() {
                     <img className='talking-to' src="/image/Guard.png" alt="" />
                     <div className='dialogue'>
                         <div className="dialogue-text" onClick={nextDialogue}>
-                           { dialogueText }
+                           { dialogueText}
                         </div>
 
                         <button ref={Choice1Ref} onClick={() => {
