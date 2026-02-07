@@ -34,5 +34,41 @@
 
     "Choice-3" : [
         {"Choice1" : "Talk to inmate by himself", "Choice2" : "Talk to inmate calling you over"}
+    ],
+
+    "Scene-Preston" : [
+        {"name" : "Preston", "text" : "You decide to ignore the scary guy after all what good could come from that you hope you won't regret it."},
+        {"name" : "Narrator", "text" : "\"Hey\" you say."},
+        {"name" : "Preston", "text" : "He responds with \"You don't remember me do you?\""},
+        {"name" : "Narrator", "text" : "You're unsure of how to respond"},
+        {"name" : "Preston", "text" : "\"This is not the first time we have talked\" he responds \"In fact I feel like we have this conversation every day\""},
+        {"name" : "Narrator", "text" : "You think maybe he is in jail with you because he's crazy. \"I'm not sure what you mean\" you respond"},
+        {"name" : "Preston", "text" : "\"C'mon ask me a question I'll know it\""}
+    ],
+
+    "Choice-Preston" : [
+        {"Choice1" : "\"Who am I?\"", "Choice2" : "\"Who are you\""}
+    ],
+
+    "Scene-Preston.I" : [
+        {"name" : "Preston", "text" : "\"You're whos knocking on deaths door and if you ask the warden someone who is about to suffer for eternity after. But apart from that I would say you're just an unclucky guy who's gonna have to make some choices lest they want to suffer.\""},
+        {"name" : "You", "text" : "\"Geez way to sour the mood I already know I'm going to die\""}
+    ],
+
+    "Scene-Preston.You" : [
+        {"name" : "Preston", "text" : "\"I'm someone who has been here longer then you and knows a thing or two. You can believe me or you cannot but I would not recommend the latter.\""},
+        {"name" : "You", "text" : "\"Alright, Ill try and keep that in mind\""}
+    ],
+
+    "Scene-Jeff" : [
+        {"name" : "Narrator", "text" : "Text"}
+    ],
+
+    "Choice" : [
+        {"Choice1" : "action1", "Choice2" : "action 2"}
+    ],
+
+    "Scene" : [
+        {"name" : "Narrator", "text" : "Text"}
     ]
 }
