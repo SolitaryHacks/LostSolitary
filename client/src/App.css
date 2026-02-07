@@ -55,7 +55,7 @@ canvas#threejs {
 
 .ChatBox{
   text-align:bottom left;
-  background-color: black;
+  background-color: white;
   heigth:10%;
   opacity: 30%;
   
@@ -68,16 +68,12 @@ canvas#threejs {
 }
 
 @keyframes fade{
-
   0%{opacity:1;}
   100%{opacity:0; background-image: none; }
 }
 
 .TitleButton{
-  width:20%;
-  height: 20%;
-  right: 50%;
-  top: 30%;
+  bottom:30%;
 
   position: fixed;
   opacity: 0;
