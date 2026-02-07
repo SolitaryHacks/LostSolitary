@@ -2,6 +2,10 @@ canvas#threejs {
   width: 100%;
   height: 100%;
 
+    touch-action: none;
+    pointer-events: none;
+    display: none;
+
   touch-action: none;
 
   position: fixed;
@@ -25,9 +29,7 @@ canvas#threejs {
   background-size: 100% 100%;
   
 
-  touch-action: none;
-  pointer-events: none;
-  display: none;
+
 
   z-index: 2;
 }
@@ -46,6 +48,21 @@ canvas#threejs {
 }
 .TitleText{
   opacity:1;
+
+}
+
+
+.ChatBox{
+  text-align:bottom left;
+  background-color: black;
+  heigth:10%;
+  opacity: 30%;
+  
+  border-radius: 20%;
+  position: absolute;
+  bottom:5%;
+  left:40%;
+  z-index:2;
 
 }
 

@@ -52,7 +52,7 @@ export default function App() {
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
         
-        <div className="TitleBackground" ref={AreaRef} >
+        <div className="TitleBackground" ref={AreaRef}>
             
             
             {/* 2d stuff goes here vvvvvv */}
@@ -64,7 +64,17 @@ export default function App() {
 
             </div>
 
+
+
+            <div className="ChatBox">
+
+
+            </div>
+
+            
+
         </div>
+
 
         
     </>
