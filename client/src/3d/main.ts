@@ -1,22 +1,12 @@
 import *  as THREE from 'three'
+import Engine from './Engine'
 
 export default function main(canvas: HTMLCanvasElement) {
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer()
+    const engine = new Engine(canvas)
 
-    window.addEventListener('resize', resize)
-    renderer.setAnimationLoop(animate)
-    resize()
+    console.log(engine)
 
-    function animate() {
-        renderer.render(scene, camera)
-    }
+    engine.startAnimate()
 
-    function resize() {
-        renderer.setSize( window.innerWidth, window.innerHeight )
-
-        camera.updateProjectionMatrix()
-    }
-
+    return () => engine.dispose()
 }
