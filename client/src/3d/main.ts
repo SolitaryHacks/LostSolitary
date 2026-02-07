@@ -10,6 +10,13 @@ export default function main(canvas: HTMLCanvasElement) {
     window.addEventListener('resize', engine.onresize.bind(engine))
     engine.onresize()
 
+    setTimeout(() => {
+        if(engine.models.Warden) {
+            engine.models.Warden.visible = true
+        }
+
+    }, 1000)
+
     return () => {
         location.reload()
         engine.dispose()
