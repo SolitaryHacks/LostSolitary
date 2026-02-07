@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import type GameScene from './Scenes/GameScene'
+import TestScene from './Scenes/TestScene'
 
 export default class Engine {
     canvas: HTMLCanvasElement
@@ -7,6 +9,7 @@ export default class Engine {
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
+    sceneMap: Record<string, GameScene>
     private _requestAnimationFrameId: number
     private _beforeTime: number
     deltaTime: number
@@ -17,8 +20,14 @@ export default class Engine {
 
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-        this.renderer = new THREE.WebGLRenderer()
-        this.controls = new OrbitControls(this.camera)
+        this.renderer = new THREE.WebGLRenderer({
+            canvas: canvas
+        })
+        this.controls = new OrbitControls(this.camera, canvas)
+
+        this.sceneMap = {
+            TestScene: new TestScene(this)
+        }
 
         this._requestAnimationFrameId = -1
 
@@ -26,6 +35,18 @@ export default class Engine {
         this.deltaTime = 0
         this.fps = 0
 
+    }
+
+    setScene(gameScene: GameScene) {
+        if(!gameScene.initialized) {
+            gameScene.init()
+
+            gameScene.initialized = true
+        }
+
+        this.scene = gameScene.scene
+
+        console.warn(`Scene has changed to => `, gameScene)
     }
 
     dispose() {
@@ -58,6 +79,7 @@ export default class Engine {
         
         this._beforeTime = timestamp
 
+        this.controls.update()
         this.renderer.render(this.scene, this.camera)
     }
 }

@@ -19,5 +19,9 @@ canvas#threejs {
 
   color: white;
 
+  touch-action: none;
+  pointer-events: none;
+  display: none;
+
   z-index: 2;
 }
