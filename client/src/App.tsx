@@ -20,6 +20,7 @@ export default function App() {
 
     const [ currentScene, setCurrentScene ] = useState('Scene-')
     const [ dialogueText, setDialogueText ] = useState('')
+    const [ talkingToSrc, setTalkingToSrc ] = useState('')
 
     useEffect(() => {
         if(!Engine3D) return
@@ -46,10 +47,19 @@ export default function App() {
             AreaRef.current!.style.backgroundImage = 'none';
             ChatBoxRef.current!.style.visibility = 'visible'
             
-            Engine3D!.models.Guard!.visible = true
+            // Engine3D!.models.Guard!.visible = true
         }, 2000);
     }
 
+    function setModels(name: string) {
+        if(name === 'Neighbor') {
+            setTalkingToSrc(() => '/image/prisoner.png')
+            Engine3D!.showModel('Prisoner')
+        } else if(name === 'Warden') {
+            setTalkingToSrc(() => '/image/warden.png')
+            Engine3D!.showModel('Warden')
+        }
+    }
 
     function nextDialogue() {
         console.log(dialogueCount)
@@ -72,13 +82,15 @@ export default function App() {
             Choice1Ref.current!.style.visibility = 'visible'
             Choice2Ref.current!.style.visibility = 'visible'
 
-            setDialogueText(() => `Select a choice...\n`)
+            setDialogueText(() => `Select a choice... ${choices.Choice1} or ${choices.Choice2}`)
 
             return
         }
 
         const dialogue = scene[dialogueCount]
  
+        setModels(dialogue.name)
+
         setDialogueText(() => {
             return `[${dialogue.name}]: ${dialogue.text}`
         })
@@ -105,7 +117,7 @@ export default function App() {
                      <span className='title-text'>Lost Solitary</span>
                 </div>
                 <div ref={ChatBoxRef} className="ChatBox">
-                    <img className='talking-to' src="/image/Guard.png" alt="" />
+                    <img className='talking-to' src={talkingToSrc} alt="" />
                     <div className='dialogue'>
                         <div className="dialogue-text" onClick={nextDialogue}>
                            { dialogueText}
