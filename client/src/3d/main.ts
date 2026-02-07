@@ -21,4 +21,5 @@ export default function main(canvas: HTMLCanvasElement) {
         location.reload()
         engine.dispose()
     }
+    
 }

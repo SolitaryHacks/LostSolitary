@@ -33,11 +33,15 @@ export default function App() {
 
     function TitleTransition(){
         AreaRef.current!.style.backgroundImage='url("/SolitaryTitleTransition.gif")';
-        AreaRef.current!.style.animation='fade 2s linear forwards';
-        AreaRef.current!.style.opacity='0';
+        
+        
         TitleText.current!.style.opacity='0';
 
+        setTimeout(()=>{
+            AreaRef.current!.style.opacity='0';
+            AreaRef.current!.style.display="none";
 
+        }, 2000);
 
     }
 
@@ -52,7 +56,7 @@ export default function App() {
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
         
-        <div className="TitleBackground" ref={AreaRef} >
+        <div className="TitleBackground" ref={AreaRef}>
             
             
             {/* 2d stuff goes here vvvvvv */}
@@ -64,7 +68,17 @@ export default function App() {
 
             </div>
 
+
+
+            <div className="ChatBox">
+
+
+            </div>
+
+            
+
         </div>
+
 
         
     </>
