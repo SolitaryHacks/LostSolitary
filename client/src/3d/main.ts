@@ -1,4 +1,3 @@
-import *  as THREE from 'three'
 import Engine from './Engine'
 
 export default function main(canvas: HTMLCanvasElement) {
@@ -7,6 +6,7 @@ export default function main(canvas: HTMLCanvasElement) {
     console.log(engine)
 
     engine.startAnimate()
+    window.addEventListener('resize', engine.onresize.bind(engine))
 
     return () => {
         location.reload()

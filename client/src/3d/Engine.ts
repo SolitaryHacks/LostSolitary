@@ -1,10 +1,12 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export default class Engine {
     canvas: HTMLCanvasElement
     scene: THREE.Scene
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
+    controls: OrbitControls
     private _requestAnimationFrameId: number
     private _beforeTime: number
     deltaTime: number
@@ -16,16 +18,18 @@ export default class Engine {
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
         this.renderer = new THREE.WebGLRenderer()
+        this.controls = new OrbitControls(this.camera)
 
         this._requestAnimationFrameId = -1
 
         this._beforeTime = 0
         this.deltaTime = 0
         this.fps = 0
+
     }
 
     dispose() {
-        this.stopAnimate
+        this.stopAnimate()
     }
 
     startAnimate() {
