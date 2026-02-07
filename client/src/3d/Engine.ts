@@ -1,8 +1,23 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import type GameScene from './Scenes/GameScene'
-import TestScene from './Scenes/TestScene'
-import Scene1 from './Scenes/Scene1'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { Actors } from './Models';
+
+const loader = new GLTFLoader()
+
+interface Models {
+    Guard: THREE.Group | null
+    Prisoner: THREE.Group | null
+    Visitor: THREE.Group | null
+    Warden: THREE.Group | null
+}
+
+const ModelSrc = {
+    Guard: '/Guard.glb',
+    Prisoner: '/Prisoner.glb',
+    Visitor: '/Visitor.glb',
+    Warden: '/Warden.glb'
+}
 
 export default class Engine {
     canvas: HTMLCanvasElement
@@ -10,9 +25,10 @@ export default class Engine {
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
-    sceneMap: Record<string, GameScene>
+    models: Models
     private _requestAnimationFrameId: number
     private _beforeTime: number
+    isAllModelsLoaded: boolean
     deltaTime: number
     fps: number
     
@@ -26,29 +42,90 @@ export default class Engine {
         })
         this.controls = new OrbitControls(this.camera, canvas)
 
-        this.sceneMap = {
-            TestScene: new TestScene(this),
-            Scene1: new Scene1(this)
+        this.models = {
+            Guard: null,
+            Prisoner: null,
+            Visitor: null,
+            Warden: null
         }
+
+        this.isAllModelsLoaded = false
 
         this._requestAnimationFrameId = -1
 
         this._beforeTime = 0
         this.deltaTime = 0
         this.fps = 0
-
+        
+        this.init()
+        this.loadModels()
     }
 
-    setScene(gameScene: GameScene) {
-        if(!gameScene.initialized) {
-            gameScene.init()
+    loadModels() {
+        const MODEL_COUNT = Object.keys(ModelSrc).length
+    
+        loader.load(ModelSrc.Prisoner, model => {
+            model.scene.scale.setScalar(10)
+            model.scene.position.set(0, -13, -5)
 
-            gameScene.initialized = true
-        }
+            this.models.Prisoner = model.scene
 
-        this.scene = gameScene.scene
+            model.scene.visible = false
+            this.scene.add(model.scene)
+        })
 
-        console.warn(`Scene has changed to => `, gameScene)
+         loader.load(ModelSrc.Guard, model => {
+            model.scene.scale.setScalar(10)
+            model.scene.position.set(0, -13, -5)
+
+            this.models.Prisoner = model.scene
+
+            model.scene.visible = false
+            this.scene.add(model.scene)
+        })
+
+         loader.load(ModelSrc.Warden, model => {
+            model.scene.scale.setScalar(1)
+            model.scene.position.set(0, -13, -5)
+
+            this.models.Prisoner = model.scene
+
+            model.scene.visible = false
+            this.scene.add(model.scene)
+        })
+
+         loader.load(ModelSrc.Visitor, model => {
+            model.scene.scale.setScalar(10)
+            model.scene.position.set(0, -13, -5)
+
+            this.models.Prisoner = model.scene
+
+            model.scene.visible = true
+            this.scene.add(model.scene)
+        })
+    }
+
+    init() {
+        const { camera } = this
+
+        const size = 50
+        const geometry = new THREE.BoxGeometry(size, size, size)
+        const material = [
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+        ]
+        const cube = new THREE.Mesh(geometry, material)
+        // const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, 0, 2)
+        const ambientLight = new THREE.AmbientLight(0xFFFFFFFF, 1)
+
+        cube.position.set(0, size / 5, 0)
+        camera.position.set(0, 0, 5)
+        
+        this.scene.add(cube, ambientLight)
     }
 
     dispose() {
