@@ -3,6 +3,7 @@
 ## How to run the server
 ```
 cd ./client
+npm i
 ```
 
 ```
