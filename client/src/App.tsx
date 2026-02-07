@@ -6,6 +6,8 @@ import Engine from './3d/Engine'
 import Scenes from './Scenes.json'
 
 
+let dialogueCount = 0
+let sceneCount = 1
 export default function App() {
     const CanvasRef = useRef<HTMLCanvasElement | null>(null)
     const [ Engine3D, setEngine3D ] = useState<Engine | null>(null)
@@ -13,10 +15,11 @@ export default function App() {
     const AreaRef=useRef<HTMLDivElement>(null);//For titleTransition
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
     const ChatBoxRef = useRef<HTMLDivElement>(null)
+    const Choice1Ref = useRef<HTMLButtonElement>(null)
+    const Choice2Ref = useRef<HTMLButtonElement>(null)
 
-    const [ currentScene, setCurrentScene ] = useState('Scene-1')
+    const [ currentScene, setCurrentScene ] = useState('Scene-')
     const [ dialogueText, setDialogueText ] = useState('')
-    const [ dialogueCount, setDialogueCount ] = useState(-1)
 
     useEffect(() => {
         if(!Engine3D) return
@@ -47,15 +50,51 @@ export default function App() {
         }, 2000);
     }
 
-    function nextDialogue() {
-        setDialogueCount(c => c++)
 
+    function nextDialogue() {
+        console.log(dialogueCount)
+
+        // @ts-ignore
+        const scene = Scenes[currentScene + sceneCount]
+
+        if(dialogueCount >= scene.length) {
+            // @ts-ignore
+            const choices = Scenes['Choice-' + sceneCount][0]
+
+            if('Choice' in choices) {
+                setDialogueText(() => `Select a choice... ${choices.Choice}`)
+                
+                Choice1Ref.current!.style.visibility = 'visible'
+
+                return
+            }
+
+            Choice1Ref.current!.style.visibility = 'visible'
+            Choice2Ref.current!.style.visibility = 'visible'
+
+            setDialogueText(() => `Select a choice...\n`)
+
+            return
+        }
+
+        const dialogue = scene[dialogueCount]
+ 
         setDialogueText(() => {
-            const data = Scenes['Scene-1']
-            
-            return ``
+            return `[${dialogue.name}]: ${dialogue.text}`
         })
+
+        dialogueCount++
     }
+
+    function resetButtonChoice(buttonChoice: 'choice1' | 'choice2') {
+        Choice1Ref.current!.style.visibility = 'hidden'
+        Choice2Ref.current!.style.visibility = 'hidden'
+
+        sceneCount++
+        dialogueCount = 0
+
+        nextDialogue()
+    } 
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
@@ -69,11 +108,15 @@ export default function App() {
                     <img className='talking-to' src="/image/Guard.png" alt="" />
                     <div className='dialogue'>
                         <div className="dialogue-text" onClick={nextDialogue}>
-                           { dialogueText }
+                           { dialogueText}
                         </div>
 
-                        <button className='choice'>Choice 1</button>
-                        <button className='choice'>Choice 2</button>
+                        <button ref={Choice1Ref} onClick={() => {
+                            resetButtonChoice('choice1')
+                        }} className='choice choice1'>Choice 1</button>
+                        <button ref={Choice2Ref} onClick={() => {
+                            resetButtonChoice('choice2')
+                        }} className='choice choice2'>Choice 2</button>
                     </div>
                 </div>
         </div>
