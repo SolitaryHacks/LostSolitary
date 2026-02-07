@@ -155,22 +155,30 @@ export default class Engine {
 
         const size = 50
         const geometry = new THREE.BoxGeometry(size, size, size)
-        const material = [
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-            new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
-        ]
-        const cube = new THREE.Mesh(geometry, material)
-        // const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, 0, 2)
-        const ambientLight = new THREE.AmbientLight(0xFFFFFFFF, 1)
+        const jailTexture = new THREE.TextureLoader()
 
-        cube.position.set(0, size / 5, 0)
-        camera.position.set(0, 0, 5)
-        
-        this.scene.add(cube, ambientLight)
+        jailTexture.load('/image/jail.png', texture => {
+            const material = [
+                // new THREE.MeshStandardMaterial({ color: 'rgb(50, 250, 50)', side: THREE.BackSide }),
+                // new THREE.MeshStandardMaterial({ color: 'rgb(50, 250, 50)', side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ map: texture, side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ map: texture, side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ color: 'rgb(50, 50, 50)', side: THREE.BackSide }),
+                new THREE.MeshStandardMaterial({ map: texture, side: THREE.BackSide }),
+                // new THREE.MeshStandardMaterial({ color: 'rgb(50, 250, 50)', side: THREE.BackSide }),
+            ]
+            const cube = new THREE.Mesh(geometry, material)
+            // const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, 0, 2)
+            const ambientLight = new THREE.AmbientLight(0xFFFFFFFF, 1)
+    
+            cube.position.set(0, size / 5, 0)
+            camera.position.set(0, 0, 5)
+            
+            this.scene.add(cube, ambientLight)
+        })
+
     }
 
     dispose() {

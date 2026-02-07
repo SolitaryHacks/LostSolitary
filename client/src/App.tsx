@@ -20,12 +20,12 @@ export default function App() {
 
     const [ currentScene, setCurrentScene ] = useState('Scene-')
     const [ dialogueText, setDialogueText ] = useState('')
-    const [ talkingToSrc, setTalkingToSrc ] = useState('')
+    const [ talkingToSrc, setTalkingToSrc ] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
 
     useEffect(() => {
         if(!Engine3D) return
 
-        TitleTransition()
+        // TitleTransition()
 
         console.log('3D Engine is available')
         console.log(Engine3D)
@@ -58,6 +58,9 @@ export default function App() {
         } else if(name === 'Warden') {
             setTalkingToSrc(() => '/image/warden.png')
             Engine3D!.showModel('Warden')
+        } else {
+            setTalkingToSrc(() => 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
+            Engine3D!.hideAllModels()
         }
     }
 

@@ -91,6 +91,8 @@ canvas#threejs {
 
 img.talking-to {
   width: 10rem;
+
+  border: 2px dashed grey;
   
   aspect-ratio: 1 / 1;
 }

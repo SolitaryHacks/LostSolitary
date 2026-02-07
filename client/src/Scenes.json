@@ -62,13 +62,5 @@
 
     "Scene-Jeff" : [
         {"name" : "Narrator", "text" : "Text"}
-    ],
-
-    "Choice" : [
-        {"Choice1" : "action1", "Choice2" : "action 2"}
-    ],
-
-    "Scene" : [
-        {"name" : "Narrator", "text" : "Text"}
     ]
 }
