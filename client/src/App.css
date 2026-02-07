@@ -97,6 +97,7 @@ img.talking-to {
 
 .dialogue {
   /*flex-grow: 1;*/
+  width: 80%;
   max-width: 80%;
   display: inline-block;
 
@@ -125,6 +126,7 @@ button.choice1 {
   font-family:'Lucida Sans';
   font-style: 'bold';
 
+  visibility: hidden;
 }
 
 button.choice2 {
@@ -136,6 +138,7 @@ button.choice2 {
   font-family:'Lucida Sans';
   font-style: 'bold';
 
+  visibility: hidden;
 }
 
 
@@ -158,6 +161,3 @@ button.choice2 {
   z-index: 3;
  
 }
-
-
-
