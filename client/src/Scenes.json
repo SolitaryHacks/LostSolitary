@@ -1,9 +1,11 @@
 {
     "Scene-1" : [
         {"name" : "Narrator", "text" : "You wake up in a prison. You are lost within your own thoughts. Your crimes cloud you, unknown as to what you have done to deserve such punishment."},
-        {"name" : "Neighbor", "text" : "\"Hello, I see you are awake\" Your ears meet before your eyes with your cell mate who claims \"today's your lucky day\""},
-        {"name" : "Narrator", "text" : "You are fated to die today at dawn. You are unaware of why, but the world knows. The prison knows. Everybody knows… "},
-        {"name" : "Narrator", "text" : "You must escape, and the sirens of roll call may be your best chance of salvation."}
+        {"name" : "Narrator", "text" : "You hear banging to the left of you it must be your cell neighbor you're in such a small cell this must be solitary."},
+        {"name" : "Narrator", "text" : "Suddenly you hear a voice."},
+        {"name" : "Neighbor", "text" : "\"Hello, I see you are awake\" His words meet your ears \"today's your lucky day\". you shudder thinking what that probably means."},
+        {"name" : "Narrator", "text" : "You realize you are fated to die today at dawn. You are unaware of why, but the world knows. The prison knows. Everybody knows… "},
+        {"name" : "Narrator", "text" : "You must escape, and the sound of rollcall may be your first chance of salvation."}
 
     ],
 
@@ -12,10 +14,24 @@
     ],
 
     "Scene-2" : [
-        {"name" : "Name", "text" : "Text"}
+        {"name" : "Narrator", "text" : "You go outside your room and stand in line with your cell with the rest of the prisoners in the block. You see a man in a suit flanked by 2 guards he clearly commands authority."},
+        {"name" : "Warden", "text" : "\"Hello Inmates I hope you're enjoying death row one of you today is very lucky. You're leaving us and going to where you belong to rot.\""},
+        {"name" : "Your Thoughts", "text" : "*He laughs at the misery of others especially me you think*"},
+        {"name" : "Warden", "text" : "\"Alright now lets begin roll call Preston, Jeff, Adrian, and of course our lucky winner YOU. \""},
+        {"name" : "Narrator", "text" : "\"Here\" You answer weakly unsure of why the warden has such a vendetta against you or why he seems to be enjoying it."},
+        {"name" : "Narrator", "text" : "You make out the 2 guards nametag as they usher you into the cafeteria Mack and Garrett you hope they are nice to you."}
     ],
 
     "Choice-2" : [
+        {"Choice" : "Go to Chow Hall"}
+    ],
+
+    "Choice-3" : [
         {"Choice1" : "action1", "Choice2" : "action 2"}
+    ],
+
+    "Scene" : [
+        {"name" : "Narrator", "text" : "Text"}
     ]
 }
+
