@@ -8,5 +8,8 @@ export default function main(canvas: HTMLCanvasElement) {
 
     engine.startAnimate()
 
-    return () => engine.dispose()
+    return () => {
+        location.reload()
+        engine.dispose()
+    }
 }

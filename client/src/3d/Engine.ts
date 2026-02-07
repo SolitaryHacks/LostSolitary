@@ -48,7 +48,11 @@ export default class Engine {
         window.requestAnimationFrame(this.onanimate.bind(this))
 
         if(!timestamp) return
-
+        
+        this.deltaTime = (timestamp - this._beforeTime) / 1000 
+        this.fps = 1 / this.deltaTime
+        
+        this._beforeTime = timestamp
 
         this.renderer.render(this.scene, this.camera)
     }
