@@ -13,6 +13,9 @@ export default function App() {
 
     const AreaRef=useRef<HTMLDivElement>(null);//For titleTransition
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
+    const TitleButton=useRef<HTMLButtonElement>(null);//
+
+
     const threeSecTimer=useRef<HTMLDivElement>(null);//For creating a 3 second timer
     const fader=useRef<HTMLDivElement>(null);//Permamently fades a div element
 
@@ -33,6 +36,8 @@ export default function App() {
 
     function TitleTransition(){
         AreaRef.current!.style.backgroundImage='url("/SolitaryTitleTransition.gif")';
+        TitleButton.current!.style.display="none";
+
         
         
         TitleText.current!.style.opacity='0';
@@ -40,6 +45,7 @@ export default function App() {
         setTimeout(()=>{
             AreaRef.current!.style.opacity='0';
             AreaRef.current!.style.display="none";
+            
 
         }, 2000);
 
@@ -61,7 +67,7 @@ export default function App() {
             
             {/* 2d stuff goes here vvvvvv */}
 
-            <button className="TitleButton"
+            <button className="TitleButton" ref={TitleButton}
             onClick={TitleTransition}></button>
             
             <div className="TitleText" ref={TitleText} style={{width: "70%", display: 'flex', position: "fixed",right: "20%", alignItems: "center",justifyContent: "center", fontSize: "500%", fontFamily: 'sans-serif',fontStyle: 'italic',fontWeight:"100%"}}>Lost Solitary
