@@ -14,7 +14,10 @@ export default function App() {
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
-        {/* put stuff here */}
+        <div className="area-2d">
+            {/* 2d stuff goes here vvvvvv */}
+            2d stuff
+        </div>
     </>
 }
 
