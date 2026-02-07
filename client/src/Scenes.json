@@ -34,13 +34,5 @@
 
     "Choice-3" : [
         {"Choice1" : "Talk to inmate by himself", "Choice2" : "Talk to inmate calling you over"}
-    ],
-
-    "Choice" : [
-        {"Choice1" : "action1", "Choice2" : "action 2"}
-    ],
-
-    "Scene" : [
-        {"name" : "Narrator", "text" : "Text"}
     ]
 }

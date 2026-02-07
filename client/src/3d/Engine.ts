@@ -126,6 +126,30 @@ export default class Engine {
         })
     }
 
+    hideAllModels() {
+        if(this.models.Guard) {
+            this.models.Guard.visible = false
+        }
+
+        if(this.models.Prisoner) {
+            this.models.Prisoner.visible = false
+        }
+
+        if(this.models.Visitor) {
+            this.models.Visitor.visible = false
+        }
+
+        if(this.models.Warden) {
+            this.models.Warden.visible = false
+        }
+    }
+
+    showModel(modelName: 'Guard' | 'Prisoner' | 'Visitor' | 'Warden') {
+        this.hideAllModels()
+
+        this.models[modelName]!.visible = true
+    }
+
     init() {
         const { camera } = this
 
