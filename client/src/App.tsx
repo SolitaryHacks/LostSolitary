@@ -12,6 +12,9 @@ export default function App() {
 
     const AreaRef=useRef<HTMLDivElement>(null);//For titleTransition
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
+    const TitleButton=useRef<HTMLButtonElement>(null);//
+
+
     const threeSecTimer=useRef<HTMLDivElement>(null);//For creating a 3 second timer
 
     useEffect(() => {
@@ -28,6 +31,8 @@ export default function App() {
 
     function TitleTransition(){
         AreaRef.current!.style.backgroundImage='url("/SolitaryTitleTransition.gif")';
+        TitleButton.current!.style.display="none";
+
         
         
         TitleText.current!.style.opacity='0';
@@ -37,10 +42,17 @@ export default function App() {
             AreaRef.current!.style.display="none";
             
 
-            
-            Engine3D!.models.Guard!.visible = true
         }, 2000);
+
     }
+
+
+
+    
+
+
+
+
 
     return <>
         <canvas ref={CanvasRef} id="threejs"></canvas>
@@ -50,7 +62,7 @@ export default function App() {
             
             {/* 2d stuff goes here vvvvvv */}
 
-            <button className="TitleButton"
+            <button className="TitleButton" ref={TitleButton}
             onClick={TitleTransition}></button>
             
             <div className="TitleText" ref={TitleText} style={{width: "70%", display: 'flex', position: "fixed",right: "20%", alignItems: "center",justifyContent: "center", fontSize: "500%", fontFamily: 'sans-serif',fontStyle: 'italic',fontWeight:"100%"}}>Lost Solitary
@@ -67,5 +79,8 @@ export default function App() {
             
 
         </div>
+
+
+        
     </>
 }
