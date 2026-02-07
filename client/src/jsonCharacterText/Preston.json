@@ -1,0 +1,24 @@
+{
+    "Room1":{
+        "Name1 present in room":{
+            "Choice1":["blank1","blank2"]},
+
+        "Name2 present in room":{
+            "Choice2":["Name2 in Room1 Dialouge"]}
+        },
+
+    
+
+
+    "Room2":{
+        "Choice1":{
+            "Dialouge":["blank1","blank2"]},
+
+        "Choice2":{
+            "Dialouge":["Choice2 in Room2 Dialouge"]}}
+
+}
+
+
+
+
