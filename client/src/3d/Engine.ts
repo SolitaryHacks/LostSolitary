@@ -62,46 +62,67 @@ export default class Engine {
     }
 
     loadModels() {
-        const MODEL_COUNT = Object.keys(ModelSrc).length
-    
+        const MAX_MODEL_COUNT = Object.keys(ModelSrc).length
+        let modelCount = 0
+        const allRotationX = 0.1
+
         loader.load(ModelSrc.Prisoner, model => {
             model.scene.scale.setScalar(10)
-            model.scene.position.set(0, -13, -5)
+            model.scene.position.set(0, -16, 0)
+            model.scene.rotation.x = allRotationX
 
             this.models.Prisoner = model.scene
 
             model.scene.visible = false
             this.scene.add(model.scene)
+
+            modelCount++
+
+            this.isAllModelsLoaded = modelCount === MAX_MODEL_COUNT
         })
 
          loader.load(ModelSrc.Guard, model => {
             model.scene.scale.setScalar(10)
-            model.scene.position.set(0, -13, -5)
+            model.scene.position.set(0, -15, 0)
+            model.scene.rotation.x = allRotationX
 
-            this.models.Prisoner = model.scene
+            this.models.Guard = model.scene
 
             model.scene.visible = false
             this.scene.add(model.scene)
+        
+            modelCount++
+        
+            this.isAllModelsLoaded = modelCount === MAX_MODEL_COUNT
         })
 
          loader.load(ModelSrc.Warden, model => {
             model.scene.scale.setScalar(1)
-            model.scene.position.set(0, -13, -5)
+            model.scene.position.set(0, -15, -1)
+            model.scene.rotation.x = allRotationX
 
-            this.models.Prisoner = model.scene
+            this.models.Warden = model.scene
 
             model.scene.visible = false
             this.scene.add(model.scene)
+        
+            modelCount++
+        
+            this.isAllModelsLoaded = modelCount === MAX_MODEL_COUNT
         })
 
          loader.load(ModelSrc.Visitor, model => {
             model.scene.scale.setScalar(10)
-            model.scene.position.set(0, -13, -5)
+            model.scene.position.set(0, -17, 0)
 
-            this.models.Prisoner = model.scene
+            this.models.Visitor = model.scene
 
-            model.scene.visible = true
+            model.scene.visible = false
             this.scene.add(model.scene)
+        
+            modelCount++
+        
+            this.isAllModelsLoaded = modelCount === MAX_MODEL_COUNT
         })
     }
 
