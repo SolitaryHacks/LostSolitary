@@ -3,7 +3,7 @@ import './App.css'
 import main3d from './3d/main'
 import './App.css'
 import Engine from './3d/Engine'
-
+import Scenes from './Scenes.json'
 
 
 export default function App() {
@@ -12,9 +12,16 @@ export default function App() {
 
     const AreaRef=useRef<HTMLDivElement>(null);//For titleTransition
     const TitleText=useRef<HTMLDivElement>(null);//For titletext
+    const ChatBoxRef = useRef<HTMLDivElement>(null)
+
+    const [ currentScene, setCurrentScene ] = useState('Scene-1')
+    const [ dialogueText, setDialogueText ] = useState('')
+    const [ dialogueCount, setDialogueCount ] = useState(-1)
 
     useEffect(() => {
         if(!Engine3D) return
+
+        TitleTransition()
 
         console.log('3D Engine is available')
         console.log(Engine3D)
@@ -26,18 +33,28 @@ export default function App() {
 
 
     function TitleTransition(){
+        nextDialogue()
+
         AreaRef.current!.style.backgroundImage='url("/SolitaryTitleTransition.gif")';
         
         TitleText.current!.style.opacity='0';
 
         setTimeout(()=>{
-        AreaRef.current!.style.backgroundImage = 'none';
-            // AreaRef.current!.style.opacity='0';
-            // AreaRef.current!.style.display="none";
-
+            AreaRef.current!.style.backgroundImage = 'none';
+            ChatBoxRef.current!.style.visibility = 'visible'
             
             Engine3D!.models.Guard!.visible = true
         }, 2000);
+    }
+
+    function nextDialogue() {
+        setDialogueCount(c => c++)
+
+        setDialogueText(() => {
+            const data = Scenes['Scene-1']
+            
+            return ``
+        })
     }
 
     return <>
@@ -45,12 +62,19 @@ export default function App() {
             <div className="TitleBackground" ref={AreaRef}>
                 {/* 2d stuff goes here vvvvvv */}
                 <button className="TitleButton" onClick={TitleTransition}></button>
-                <div className="TitleText" ref={TitleText} style={{width: "70%", display: 'flex', position: "fixed",right: "20%", alignItems: "center",justifyContent: "center", fontSize: "500%", fontFamily: 'sans-serif',fontStyle: 'italic',fontWeight:"100%"}}>Lost Solitary</div>
-                <div className="ChatBox">
+                <div className="Title" ref={TitleText}>
+                     <span className='title-text'>Lost Solitary</span>
+                </div>
+                <div ref={ChatBoxRef} className="ChatBox">
                     <img className='talking-to' src="/image/Guard.png" alt="" />
-                    <div className='dialogue'>dialogue</div>
-                    <button className='choice'>Choice 1</button>
-                    <button className='choice'>Choice 2</button>
+                    <div className='dialogue'>
+                        <div className="dialogue-text" onClick={nextDialogue}>
+                           { dialogueText }
+                        </div>
+
+                        <button className='choice'>Choice 1</button>
+                        <button className='choice'>Choice 2</button>
+                    </div>
                 </div>
         </div>
     </>

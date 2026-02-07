@@ -1,0 +1,21 @@
+{
+    "Scene-1" : [
+        {"name" : "Narrator", "text" : "You wake up in a prison. You are lost within your own thoughts. Your crimes cloud you, unknown as to what you have done to deserve such punishment."},
+        {"name" : "Neighbor", "text" : "\"Hello, I see you are awake\" Your ears meet before your eyes with your cell mate who claims \"today's your lucky day\""},
+        {"name" : "Narrator", "text" : "You are fated to die today at dawn. You are unaware of why, but the world knows. The prison knows. Everybody knows… "},
+        {"name" : "Narrator", "text" : "You must escape, and the sirens of roll call may be your best chance of salvation."}
+
+    ],
+
+    "Choice-1" : [
+        {"Choice" : "Go to Rollcall"}
+    ],
+
+    "Scene-2" : [
+        {"name" : "Name", "text" : "Text"}
+    ],
+
+    "Choice-2" : [
+        {"Choice1" : "action1", "Choice2" : "action 2"}
+    ]
+}
