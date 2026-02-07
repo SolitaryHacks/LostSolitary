@@ -14,6 +14,8 @@ export default function App() {
     
         // AreaRef.current!.style.backgroundImage = 'url("dskjfhaskldjhf")'
 
+        AreaRef.current!.style.animation = 'fade 1s linear infinite'
+
         // dispose 3d engine
         return () => engine3d()
     }, [])

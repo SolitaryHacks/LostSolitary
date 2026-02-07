@@ -10,7 +10,7 @@ export default function main(canvas: HTMLCanvasElement) {
     window.addEventListener('resize', engine.onresize.bind(engine))
     engine.onresize()
 
-    engine.setScene(engine.sceneMap.TestScene)
+    engine.setScene(engine.sceneMap.Scene1)
 
     return () => {
         location.reload()

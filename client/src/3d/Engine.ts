@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import type GameScene from './Scenes/GameScene'
 import TestScene from './Scenes/TestScene'
+import Scene1 from './Scenes/Scene1'
 
 export default class Engine {
     canvas: HTMLCanvasElement
@@ -26,7 +27,8 @@ export default class Engine {
         this.controls = new OrbitControls(this.camera, canvas)
 
         this.sceneMap = {
-            TestScene: new TestScene(this)
+            TestScene: new TestScene(this),
+            Scene1: new Scene1(this)
         }
 
         this._requestAnimationFrameId = -1
